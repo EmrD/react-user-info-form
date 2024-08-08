@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import './App.css'; 
+import './App.css';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 function App() {
   const [progress, setProgress] = useState(0); 
   const [currentStep, setCurrentStep] = useState(1); // Aktif adım
   const [formData, setFormData] = useState({ name: '', age: '', job: '', about: '', opinion: '' });
+  const { animationParent } = useAutoAnimate();
 
   const handleStepClick = (step) => {
     let newProgress;
@@ -28,7 +30,7 @@ function App() {
         newProgress = 0; 
     }
     setProgress(newProgress);
-    setCurrentStep(step); 
+    setCurrentStep(step);
   };
 
   const handleChange = (e) => {
@@ -40,7 +42,7 @@ function App() {
   };
 
   useEffect(() => {
-    handleStepClick(1); 
+    handleStepClick(1);
   }, []);
 
   useEffect(() => {
@@ -65,7 +67,7 @@ function App() {
   };
 
   return (
-    <div className="p-8">
+    <div className="p-8" >
       <div className="flex flex-col items-center">
         <div className="relative flex space-x-48 mb-4 items-center justify-center">
           {[1, 2, 3, 4].map((step) => (
@@ -180,7 +182,7 @@ function App() {
                 <button
                   className="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-full"
                   style={currentStep === 1 ? { opacity: 0.5 } : { opacity: 1 }}
-                  disabled={currentStep === 1 || !isFormValid()}
+                  disabled={currentStep === 1 }
                   onClick={() => handleStepClick(currentStep - 1)}
                 >
                   Önceki Adım
@@ -215,7 +217,7 @@ function App() {
                 <button
                   className="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-full"
                   style={currentStep === 1 ? { opacity: 0.5 } : { opacity: 1 }}
-                  disabled={currentStep === 1 || !isFormValid()}
+                  disabled={currentStep === 1}
                   onClick={() => handleStepClick(currentStep - 1)}
                 >
                   Önceki Adım
@@ -250,7 +252,7 @@ function App() {
                 <button
                   className="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-full"
                   style={currentStep === 1 ? { opacity: 0.5 } : { opacity: 1 }}
-                  disabled={currentStep === 1 || !isFormValid()}
+                  disabled={currentStep === 1 }
                   onClick={() => handleStepClick(currentStep - 1)}
                 >
                   Önceki Adım
