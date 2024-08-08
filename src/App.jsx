@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import './App.css'; // Tailwind'i import etmeyi unutmayın
+import './App.css'; 
 
 function App() {
-  const [progress, setProgress] = useState(0); // Başlangıçta 1. adım seçilmiş olsun
+  const [progress, setProgress] = useState(0); 
   const [currentStep, setCurrentStep] = useState(1); // Aktif adım
   const [formData, setFormData] = useState({ name: '', age: '', job: '', about: '', opinion: '' });
 
@@ -25,10 +25,10 @@ function App() {
         newProgress = 100;
         break;
       default:
-        newProgress = 0; // Varsayılan olarak 1. adım yüzdesi
+        newProgress = 0; 
     }
     setProgress(newProgress);
-    setCurrentStep(step); // Adım seçildiğinde aktif adımı güncelle
+    setCurrentStep(step); 
   };
 
   const handleChange = (e) => {
@@ -40,7 +40,7 @@ function App() {
   };
 
   useEffect(() => {
-    handleStepClick(1); // Sayfa ilk yüklendiğinde 1. adımı ayarla
+    handleStepClick(1); 
   }, []);
 
   useEffect(() => {
